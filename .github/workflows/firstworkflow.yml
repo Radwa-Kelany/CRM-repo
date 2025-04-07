@@ -1,48 +1,48 @@
-name: first workflow
-on: 
-  push:
-    branches:
-      - "main"
-jobs: 
-  first-workflow-job:
-    name: first job
-    runs-on: ubuntu-latest
-    steps: 
-     - name: bash command
-       run: echo "first workflow"
-       shell: bash 
+# name: first workflow
+# on: 
+#   push:
+#     branches:
+#       - "main"
+# jobs: 
+#   first-workflow-job:
+#     name: first job
+#     runs-on: ubuntu-latest
+#     steps: 
+#      - name: bash command
+#        run: echo "first workflow"
+#        shell: bash 
      
-     - name: checkout code
-       uses: actions/checkout@v4
+#      - name: checkout code
+#        uses: actions/checkout@v4
 
-     - name: Configure AWS Credentials
-       uses: aws-actions/configure-aws-credentials@v1
-       with:
-        aws-region: eu-north-1
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#      - name: Configure AWS Credentials
+#        uses: aws-actions/configure-aws-credentials@v1
+#        with:
+#         aws-region: eu-north-1
+#         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
-     - name: list s3 buckets
-       run : aws s3 ls
+#      - name: list s3 buckets
+#        run : aws s3 ls
 
-    #  - name: change directory to terraform
-    #    run: cd terraform
+#     #  - name: change directory to terraform
+#     #    run: cd terraform
 
-     - name: create key pair 
-       run: ssh-keygen -b 2048 -t rsa -f ~/.ssh/sshkey -q -N ""
+#      - name: create key pair 
+#        run: ssh-keygen -b 2048 -t rsa -f ~/.ssh/sshkey -q -N ""
  
-     - name: list key pair files
-       run: ls ~/.ssh
+#      - name: list key pair files
+#        run: ls ~/.ssh
 
-     - name: Setup Terraform
-       uses: hashicorp/setup-terraform@v3
+#      - name: Setup Terraform
+#        uses: hashicorp/setup-terraform@v3
 
-     - name: initialize terraform
-       run: terraform init
+#      - name: initialize terraform
+#        run: terraform init
 
-     - name: plan terraform
-       run: terraform plan -out=tfplan2
+#      - name: plan terraform
+#        run: terraform plan -out=tfplan2
      
-     - name: apply Terraform 
-       run: terraform apply --auto-approve
+#      - name: apply Terraform 
+#        run: terraform apply --auto-approve
 
