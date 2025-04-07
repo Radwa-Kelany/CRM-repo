@@ -1,0 +1,10 @@
+name: cron workflow to destroy terraform resources 
+on:
+  schedule: 
+    - cron: "0/5 * * * *"
+
+jobs: 
+  cron-workflow:
+    runs-on: ubuntu-latest
+    steps: 
+      run: echo "cron workflow"
