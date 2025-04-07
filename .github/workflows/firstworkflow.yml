@@ -12,6 +12,12 @@ jobs:
        run: echo "first workflow"
        shell: bash 
      
+     - name: Wait before running
+       run: sleep 300  # Waits 5 minutes (300 seconds)
+       if: ${{ github.event_name == 'schedule' }}  
+
+     - name: Run main task
+       run: echo "This runs after the delay"
 #      - name: checkout code
 #        uses: actions/checkout@v4
 
@@ -46,9 +52,3 @@ jobs:
 #      - name: apply Terraform 
 #        run: terraform apply --auto-approve
 
-       - name: Wait before running
-         run: sleep 300  # Waits 5 minutes (300 seconds)
-         if: ${{ github.event_name == 'schedule' }}  # Example condition
-
-      - name: Run main task
-        run: echo "This runs after the delay"
