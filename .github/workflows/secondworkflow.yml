@@ -4,10 +4,10 @@ on:
     - cron: "0/5 * * * *"
 
 jobs: 
-  cron-workflow:
-    name: cron-job
+  cron-workflow-job:
+    name: cron job
     runs-on: ubuntu-latest
     steps: 
-      name: bash command
-      run: echo "cron workflow"
-      shell: bash 
+     - name: bash command
+       run: echo "cron workflow"
+       shell: bash 
