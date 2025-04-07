@@ -5,6 +5,9 @@ on:
 
 jobs: 
   cron-workflow:
+    name: cron-job
     runs-on: ubuntu-latest
     steps: 
+      name: bash command
       run: echo "cron workflow"
+      shell: bash
