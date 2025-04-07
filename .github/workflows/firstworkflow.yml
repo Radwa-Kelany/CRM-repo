@@ -28,6 +28,12 @@ jobs:
     #  - name: change directory to terraform
     #    run: cd terraform
 
+     - name: create key pair 
+       run: ssh-keygen -b 2048 -t rsa -f ~/.ssh/sshkey -q -N ""
+ 
+     - name: list key pair files
+       run: ls ~/.ssh
+
      - name: Setup Terraform
        uses: hashicorp/setup-terraform@v3
 
@@ -40,8 +46,3 @@ jobs:
      - name: apply Terraform 
        run: terraform apply --auto-approve
 
-     - name: create key pair 
-       run: ssh-keygen -b 2048 -t rsa -f ~/.ssh/sshkey -q -N ""
-    
-     - name: list key pair files
-       run: ls ~/.ssh
