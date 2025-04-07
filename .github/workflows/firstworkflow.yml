@@ -30,12 +30,12 @@ jobs:
   
      - name: change directory to terraform
        run: cd terraform
-       
+
      - name: initialize terraform
        run: terraform init
 
      - name: plan terraform
-       run: terraform plan -out=tfplan
+       run: terraform plan -out=tfplan2
      
      - name: apply Terraform 
        run: terraform apply --auto-approve
