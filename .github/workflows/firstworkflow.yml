@@ -25,11 +25,11 @@ jobs:
      - name: list s3 buckets
        run : aws s3 ls
 
-     - name: Setup Terraform
-       uses: hashicorp/setup-terraform@v3
-  
      - name: change directory to terraform
        run: cd terraform
+
+     - name: Setup Terraform
+       uses: hashicorp/setup-terraform@v3
 
      - name: initialize terraform
        run: terraform init
