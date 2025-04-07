@@ -16,6 +16,6 @@ resource "aws_instance" "web" {
   instance_type = "t3.micro"
   key_name = "t-key"
   tags = {
-    Name = "HelloWorld"
+    Name = "t-ec2"
   }
 }
