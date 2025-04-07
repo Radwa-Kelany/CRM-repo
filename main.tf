@@ -11,10 +11,10 @@ resource "aws_key_pair" "t-key" {
   public_key = file ("~/.ssh/sshkey.pub")
 }
 
-   resource "aws_instance" "web" {
+resource "aws_instance" "web" {
   ami           = "ami-0c1ac8a41498c1a9c"
   instance_type = "t3.micro"
-  key_name = aws_key_pair.t-key
+  key_name = "t-key"
   tags = {
     Name = "HelloWorld"
   }
