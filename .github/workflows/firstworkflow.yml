@@ -40,8 +40,8 @@ jobs:
      - name: apply Terraform 
        run: terraform apply --auto-approve
 
-    - name: create key pair 
-      run: ssh-keygen -b 2048 -t rsa -f ~/.ssh/sshkey -q -N ""
+    # - name: create key pair 
+    #   run: ssh-keygen -b 2048 -t rsa -f ~/.ssh/sshkey -q -N ""
     
-    - name: list key pair files
-      run: ls ~/.ssh
+    # - name: list key pair files
+    #   run: ls ~/.ssh
