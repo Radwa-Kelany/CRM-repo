@@ -10,4 +10,4 @@ jobs:
     steps: 
       name: bash command
       run: echo "cron workflow"
-      shell: bash
+      shell: bash 
