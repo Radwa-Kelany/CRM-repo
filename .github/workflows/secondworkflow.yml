@@ -1,9 +1,8 @@
-name: cron workflow to destroy terraform resources 
-
+name: cron workflow 
 on:
   schedule: 
     - cron: "*/5 * * * *"
-    
+  workflow_dispatch:
 
 jobs: 
   cron-workflow-job:
