@@ -17,6 +17,7 @@ resource "aws_instance" "web_east" {
   }
 }
 resource "aws_key_pair" "t_key_west" {
+  provider = aws.west
   key_name   = "t-key"
   public_key = file ("~/.ssh/sshkey.pub")
 }
