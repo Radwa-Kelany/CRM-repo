@@ -32,15 +32,13 @@ jobs:
      - name: list key pair files
        run: ls ~/.ssh
        
-    #  - name: add ssh var
-    #    id: file_content
-    #    run: 
-    #      CONTENT=$(cat ~/.ssh/sshkey)
+     - name: add ssh agent
+       run: eval $(ssh-agent -s) 
+     - name: add private key
+       run: ssh-add ~/.ssh/sshkey
+     - name: echo auth
+       run: echo $SSH_AUTH_SOCK 
 
-    #  - name: allow ssh agent
-    #    uses: webfactory/ssh-agent@v0.5.0
-    #    with:
-    #      ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
      - name: Setup Terraform
        uses: hashicorp/setup-terraform@v3
