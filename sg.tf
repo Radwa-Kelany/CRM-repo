@@ -20,17 +20,35 @@ resource "aws_security_group" "lb_sg" {
 
 
 resource "aws_vpc_security_group_ingress_rule" "from_lb" {
-  security_group_id = aws_security_group.server_sg.id
-  from_port   = 80
-  ip_protocol = "tcp"
-  to_port     = 80
+  security_group_id            = aws_security_group.server_sg.id
+  from_port                    = 80
+  ip_protocol                  = "tcp"
+  to_port                      = 80
   referenced_security_group_id = aws_security_group.lb_sg.id
 }
 
 resource "aws_vpc_security_group_ingress_rule" "from_internet" {
   security_group_id = aws_security_group.lb_sg.id
-  cidr_ipv4   = "0.0.0.0/0"
-  from_port   = 80
-  ip_protocol = "tcp"
-  to_port     = 80
+  cidr_ipv4         = "0.0.0.0/0"
+  from_port         = 80
+  ip_protocol       = "tcp"
+  to_port           = 80
+}
+
+resource "aws_vpc_security_group_egress_rule" "to_servers" {
+  security_group_id = aws_security_group.lb_sg.id
+
+  from_port                    = 80
+  ip_protocol                  = "tcp"
+  to_port                      = 80
+  referenced_security_group_id = aws_security_group.server_sg.id
+}
+
+# open to all temporarily until create NAT gateway
+resource "aws_vpc_security_group_egress_rule" "to_NAT" {
+  security_group_id            = aws_security_group.server_sg.id
+  cidr_ipv4                    = "0.0.0.0/0"
+  from_port                    = 80
+  ip_protocol                  = "tcp"
+  to_port                      = 80
 }

@@ -45,6 +45,9 @@ jobs:
        run: terraform apply --auto-approve
 
 
+     - name: cat private ip
+       run: cat private_ips.txt
+       
      - name: Wait before running
        run: sleep 300  # Waits 5 minutes ()
 
