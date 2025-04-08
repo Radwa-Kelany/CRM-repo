@@ -1,13 +1,31 @@
 
-resource "aws_key_pair" "t_key" {
+resource "aws_key_pair" "t_key_east" {
   key_name   = "t-key"
   public_key = file ("~/.ssh/sshkey.pub")
 }
 
-resource "aws_instance" "web" {
-  ami           = "ami-0c1ac8a41498c1a9c"
-  instance_type = "t3.micro"
-  key_name = aws_key_pair.t_key.key_name
+resource "aws_instance" "web_east" {
+  ami           = "ami-00a929b66ed6e0de6"
+  instance_type = "t2.micro"
+  key_name = aws_key_pair.t_key_east.key_name
+  tags = {
+    Name = "t-ec2-02"
+  }
+  provisioner "local-exec" {
+    command = "echo ${self.private_ip} >> private_ips.txt"
+    on_failure = continue
+  }
+}
+resource "aws_key_pair" "t_key_west" {
+  key_name   = "t-key"
+  public_key = file ("~/.ssh/sshkey.pub")
+}
+
+resource "aws_instance" "web_west" {
+  provider = aws.west
+  ami           = "ami-020fbc00dbecba358"
+  instance_type = "t2.micro"
+  key_name = aws_key_pair.t_key_west.key_name
   tags = {
     Name = "t-ec2-02"
   }
