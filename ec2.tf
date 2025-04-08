@@ -27,10 +27,10 @@ resource "aws_instance" "web-2" {
   connection {
     type     = "ssh"
     user     = "ec2-user"
-    private_key = file ("~/.ssh/sshkey.pub")
+    private_key = file ("~/.ssh/sshkey")
     host     = self.public_ip
-    agent       = true  # This enables SSH agent forwarding
-    timeout     = "2m"
+    # agent       = true  # This enables SSH agent forwarding
+    # timeout     = "2m"
   }
 
 
