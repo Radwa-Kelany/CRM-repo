@@ -31,17 +31,17 @@ resource "aws_subnet" "private_subnet" {
   }
 }
 
-resource "aws_route_table" "CRM_public_rt"{
-  vpc_id = aws_vpc.CRM_vpc.id
+# resource "aws_route_table" "CRM_public_rt"{
+#   vpc_id = aws_vpc.CRM_vpc.id
 
-  route {
-    cidr_block = "10.0.0.0/16"
-    gateway_id = aws_internet_gateway.gw.id
-  }
-  tags = {
-    Name = "CRM_public_rt"
-  }
-}
+#   route {
+#     cidr_block = "10.0.0.0/16"
+#     gateway_id = aws_internet_gateway.gw.id
+#   }
+#   tags = {
+#     Name = "CRM_public_rt"
+#   }
+# }
 
 resource "aws_route_table" "CRM_private_rt"{
   vpc_id = aws_vpc.CRM_vpc.id
@@ -61,7 +61,13 @@ resource "aws_route_table_association" "public_a_subnet" {
   route_table_id = aws_route_table.CRM_public_rt.id
 }
 
-resource "aws_route_table_association" "public_a_gw" {
+# resource "aws_route_table_association" "public_a_gw" {
+#   gateway_id     = aws_internet_gateway.gw.id
+#   route_table_id = aws_route_table.CRM_public_rt.id
+# }
+
+resource "aws_route" "r_gw" {
+  route_table_id            = aws_route_table.CRM_public_rt.id
+  destination_cidr_block    = "0.0.0.0/0"
   gateway_id     = aws_internet_gateway.gw.id
-  route_table_id = aws_route_table.CRM_public_rt.id
 }
