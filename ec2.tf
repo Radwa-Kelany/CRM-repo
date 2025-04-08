@@ -16,3 +16,27 @@ resource "aws_instance" "web" {
     on_failure = continue
   }
 }
+
+resource "aws_instance" "web-2" {
+  ami           = "ami-0c1ac8a41498c1a9c"
+  instance_type = "t3.micro"
+  key_name = aws_key_pair.t_key.key_name
+  tags = {
+    Name = "t-ec2-022"
+  }
+  connection {
+    type     = "ssh"
+    user     = "ec2-user"
+    private_key = file ("~/.ssh/sshkey")
+    host     = self.public_ip
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "sudo yum update -y",
+      "sudo yum install nginx -y",
+      "sudo systemctl start nginx",
+      "sudo systemctl enable nginx"
+    ]
+  }
+}
