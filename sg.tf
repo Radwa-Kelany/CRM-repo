@@ -22,7 +22,7 @@ resource "aws_security_group" "lb_sg" {
 resource "aws_vpc_security_group_ingress_rule" "from_lb" {
   security_group_id = aws_security_group.server_sg.id
   from_port   = 80
-  ip_protocol = "http"
+  ip_protocol = "tcp"
   to_port     = 80
   referenced_security_group_id = aws_security_group.lb_sg.id
 }
@@ -31,6 +31,6 @@ resource "aws_vpc_security_group_ingress_rule" "from_internet" {
   security_group_id = aws_security_group.lb_sg.id
   cidr_ipv4   = "0.0.0.0/0"
   from_port   = 80
-  ip_protocol = "http"
+  ip_protocol = "tcp"
   to_port     = 80
 }
