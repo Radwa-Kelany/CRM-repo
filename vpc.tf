@@ -61,10 +61,6 @@ resource "aws_route_table_association" "public_a_subnet" {
   route_table_id = aws_route_table.CRM_public_rt.id
 }
 
-# resource "aws_route_table_association" "public_a_gw" {
-#   gateway_id     = aws_internet_gateway.gw.id
-#   route_table_id = aws_route_table.CRM_public_rt.id
-# }
 
 resource "aws_route" "r_gw" {
   route_table_id            = aws_route_table.CRM_public_rt.id

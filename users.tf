@@ -7,9 +7,14 @@ resource "aws_iam_user" "terraform_user_1" {
   }
 }
 
-resource "aws_iam_access_key" "t_user_access_key" {
+resource "aws_iam_access_key" "t" {
   user = aws_iam_user.terraform_user_1.name
 }
+
+# output "access key" {
+#   value = aws_iam_access_key.t.secret
+# depends_on=[aws_iam_access_key.t]
+# }
 
 data "aws_iam_policy_document" "t_user_1_doc" {
   statement {
