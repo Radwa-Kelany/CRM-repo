@@ -1,5 +1,5 @@
 resource "aws_iam_user" "terraform_user_1" {
-  name = "t_user_1"
+  name = "t_user_01"
   path = "/system/"
 
   tags = {
