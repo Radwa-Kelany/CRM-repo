@@ -49,12 +49,12 @@ resource "aws_route_table" "CRM_private_rt"{
 
 resource "aws_route_table_association" "private_a" {
   subnet_id      = aws_subnet.private_subnet.id
-  route_table_id = aws_route_table.CRM_private_rt
+  route_table_id = aws_route_table.CRM_private_rt.id
 }
 
 resource "aws_route_table_association" "public_a_subnet" {
   subnet_id      = aws_subnet.public_subnet.id
-  route_table_id = aws_route_table.CRM_public_rt
+  route_table_id = aws_route_table.CRM_public_rt.id
 }
 
 resource "aws_route_table_association" "public_a_gw" {
