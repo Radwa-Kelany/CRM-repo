@@ -29,7 +29,10 @@ resource "aws_instance" "web-2" {
     user     = "ec2-user"
     private_key = file ("~/.ssh/sshkey")
     host     = self.public_ip
+    agent       = true  # This enables SSH agent forwarding
+    timeout     = "2m"
   }
+
 
   provisioner "remote-exec" {
     inline = [
