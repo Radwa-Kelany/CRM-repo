@@ -17,21 +17,20 @@ resource "aws_instance" "web" {
   }
 }
 
-# resource "aws_instance" "web-2" {
-#   ami           = "ami-0c1ac8a41498c1a9c"
-#   instance_type = "t3.micro"
-#   key_name = aws_key_pair.t_key.key_name
+# resource "aws_instance" "myec2"{
+  
+#   ami           = "ami-00a929b66ed6e0de6"
+#   instance_type = "t2.micro"
+#   key_name = "terraform_key"
 #   tags = {
-#     Name = "t-ec2-022"
+#     Name = "terraform_ec2"
 #   }
 #   connection {
 #     type     = "ssh"
 #     user     = "ec2-user"
-#     private_key = file ("~/.ssh/sshkey")
+#     private_key = file ("~/downloads/terraform_key.pem")
 #     host     = self.public_ip
-    # agent       = true  # This enables SSH agent forwarding
-    # timeout     = "2m"
-  # }
+#   }
 
 
 #   provisioner "remote-exec" {
@@ -43,3 +42,29 @@ resource "aws_instance" "web" {
 #     ]
 #   }
 # }
+
+# resource "aws_instance" "myec2"{
+  
+#   ami           = "ami-00a929b66ed6e0de6"
+#   instance_type = "t2.micro"
+#   key_name = "terraform_key"
+#   tags = {
+#     Name = "terraform_ec2_2"
+#   }
+#     user_data = <<-EOF
+#               #!/bin/bash
+#               yum update -y
+#               yum install -y httpd
+#               systemctl start httpd
+#               systemctl enable httpd
+#               echo "<h1>Hello World from $(hostname -f)</h1>" > /var/www/html/index.html
+#               EOF
+
+# }
+
+# output "instance_DNS" {
+
+#   value = aws_instance.myec2.public_dns
+
+# }
+
