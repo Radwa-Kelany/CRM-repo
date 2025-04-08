@@ -46,7 +46,7 @@ jobs:
 
 
      - name: Wait before running
-       run: sleep 500  # Waits 5 minutes (300 seconds)
+       run: sleep 1000  # Waits 10 minutes ()
 
      - name: destroy terraform resources
        run: terraform destroy --auto-approve
