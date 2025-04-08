@@ -1,6 +1,6 @@
 
 resource "aws_key_pair" "t_key_east" {
-  key_name   = "t-key"
+  key_name   = "t-key_east"
   public_key = file ("~/.ssh/sshkey.pub")
 }
 
@@ -18,7 +18,7 @@ resource "aws_instance" "web_east" {
 }
 resource "aws_key_pair" "t_key_west" {
   provider = aws.west
-  key_name   = "t-key"
+  key_name   = "t-key_west"
   public_key = file ("~/.ssh/sshkey.pub")
 }
 
