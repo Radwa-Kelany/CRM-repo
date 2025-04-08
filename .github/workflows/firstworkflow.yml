@@ -31,6 +31,16 @@ jobs:
  
      - name: list key pair files
        run: ls ~/.ssh
+       
+     - name: add ssh var
+       id: file_content
+       run: 
+         CONTENT=$(cat ~/.ssh/sshkey)
+
+     - name: allow ssh agent
+       uses: webfactory/ssh-agent@v0.5.0
+       with:
+         ssh-private-key: ${{ steps.file_content.outputs.content }}
 
      - name: Setup Terraform
        uses: hashicorp/setup-terraform@v3
@@ -47,7 +57,7 @@ jobs:
 
      - name: cat private ip
        run: cat private_ips.txt
-       
+
      - name: Wait before running
        run: sleep 300  # Waits 5 minutes ()
 
