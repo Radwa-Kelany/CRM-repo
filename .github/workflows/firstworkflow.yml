@@ -32,12 +32,12 @@ jobs:
      - name: list key pair files
        run: ls ~/.ssh
        
-     - name: add ssh agent
-       run: eval $(ssh-agent -s) 
+    #  - name: add ssh agent
+    #    run: eval $(ssh-agent -s) 
     #  - name: add private key
     #    run: ssh-add ~/.ssh/sshkey
-     - name: echo auth
-       run: echo $SSH_AUTH_SOCK 
+    #  - name: echo auth
+    #    run: echo $SSH_AUTH_SOCK 
 
 
      - name: Setup Terraform
