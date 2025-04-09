@@ -11,7 +11,7 @@ resource "aws_instance" "web_east" {
   tags = {
     Name = var.instance_tag[count.index]
   }
-  count = 1
+  count = var.test_var
   provisioner "local-exec" {
     command    = "echo ${self.private_ip} >> private_ips.txt"
     on_failure = continue

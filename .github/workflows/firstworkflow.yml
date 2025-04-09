@@ -23,18 +23,6 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
-     - name: "Prompt simulation"
-       id: prompt
-       run: |
-          echo "What's your name?"
-          read -r name
-          echo "name=$name" >> $GITHUB_OUTPUT
-          
-          echo "Continue? (y/n)"
-          read -r continue
-          echo "continue=$continue" >> $GITHUB_OUTPUT
-
-
      - name: create key pair 
        run: ssh-keygen -b 2048 -t rsa -f ~/.ssh/sshkey -q -N ""
  
@@ -56,7 +44,7 @@ jobs:
        run: terraform init
 
      - name: plan terraform
-       run: terraform plan -out=tfplan2
+       run: terraform plan -var test_var="2" -out=tfplan2
      
      - name: apply Terraform 
        run: terraform apply --auto-approve
