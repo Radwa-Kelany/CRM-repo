@@ -8,7 +8,7 @@ resource "aws_instance" "web_east" {
   ami           = var.instance_ami["us-east-1-amazon"]
   instance_type = var.instance_type
   key_name      = aws_key_pair.t_key_east.key_name
-  for_each = var.instance_env
+  for_each = toset(var.instance_env)
   tags = {
     Name = "ec2-${each.key}"
   }
