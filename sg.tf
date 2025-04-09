@@ -68,17 +68,17 @@ resource "aws_security_group" "lb_sg" {
      from_port= ingress.value
      to_port= ingress.value
      protocol= "tcp"
-     cider_block= ["0.0.0.0/0"]
+     cider_blocks = ["0.0.0.0/0"]
     }
   }
 
   dynamic "egress" {
-    for_each = var.ingress_ports
+    for_each = var.egress_ports
     content {
      from_port= egress.value
      to_port= egress.value
      protocol= "tcp"
-     cider_block= ["0.0.0.0/0"]
+     cider_blocks= ["0.0.0.0/0"]
     }
   }
 }

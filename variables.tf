@@ -29,6 +29,9 @@ variable "instance_env" {
 variable "ingress_ports" {
   default = [80,8200,5000,9500,443]
 }
+variable "egress_ports" {
+  default = [80,8200,5000,9500,443]
+}
 locals {
   name="test"
 }
