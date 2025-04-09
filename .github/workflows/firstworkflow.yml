@@ -44,6 +44,7 @@ jobs:
        run: |
         cd crm-project
         terraform init
+        terraform workspace new prod
         terraform plan -out=tfplan2
         terraform apply --auto-approve
 
