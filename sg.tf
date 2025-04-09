@@ -68,7 +68,7 @@ resource "aws_security_group" "lb_sg" {
      from_port= ingress.value
      to_port= ingress.value
      protocol= "tcp"
-     cider_blocks = ["0.0.0.0/0"]
+     cidr_blocks = ["0.0.0.0/0"]
     }
   }
 
@@ -78,7 +78,7 @@ resource "aws_security_group" "lb_sg" {
      from_port= egress.value
      to_port= egress.value
      protocol= "tcp"
-     cider_blocks= ["0.0.0.0/0"]
+     cidr_blocks= ["0.0.0.0/0"]
     }
   }
 }
