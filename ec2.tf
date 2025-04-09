@@ -1,23 +1,23 @@
 
-resource "aws_key_pair" "t_key_east" {
-  key_name   = "t-key_east"
-  public_key = file("~/.ssh/sshkey.pub")
-}
+# resource "aws_key_pair" "t_key_east" {
+#   key_name   = "t-key_east"
+#   public_key = file("~/.ssh/sshkey.pub")
+# }
 
-resource "aws_instance" "web_east" {
-  ami           = var.instance_ami["us-east-1-amazon"]
-  instance_type = var.instance_type
-  key_name      = aws_key_pair.t_key_east.key_name
-  for_each = toset(var.instance_env)
-  tags = {
-    Name = "ec2-${each.key}"
-  }
+# resource "aws_instance" "web_east" {
+#   ami           = var.instance_ami["us-east-1-amazon"]
+#   instance_type = var.instance_type
+#   key_name      = aws_key_pair.t_key_east.key_name
+#   for_each = toset(var.instance_env)
+#   tags = {
+#     Name = "ec2-${each.key}"
+#   }
  
-  provisioner "local-exec" {
-    command    = "echo ${self.private_ip} >> private_ips.txt"
-    on_failure = continue
-  }
-}
+#   provisioner "local-exec" {
+#     command    = "echo ${self.private_ip} >> private_ips.txt"
+#     on_failure = continue
+#   }
+# }
 # resource "aws_instance" "web_east" {
 #   ami           = var.instance_ami["us-east-1-amazon"]
 #   instance_type = var.instance_type

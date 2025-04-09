@@ -52,3 +52,33 @@
 #   ip_protocol                  = "tcp"
 #   to_port                      = 80
 # }
+
+
+resource "aws_security_groups" "lb_sg" {
+  name        = "lb_sg"
+  description = "for lb"
+  # vpc_id      = aws_vpc.CRM_vpc.id
+
+  tags = {
+    Name = "lb_sg"
+  }
+  dynamic "ingress" {
+    for_each = var.ingress_ports
+    content {
+     from_port= ingress.value
+     to_port= ingress.value
+     protocol= "tcp"
+     cider_block= ["0.0.0.0/0"]
+    }
+  }
+
+  dynamic "egress" {
+    for_each = var.ingress_ports
+    content {
+     from_port= egress.value
+     to_port= egress.value
+     protocol= "tcp"
+     cider_block= ["0.0.0.0/0"]
+    }
+  }
+}

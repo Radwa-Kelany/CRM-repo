@@ -24,6 +24,14 @@ variable "instance_ami" {
 variable "instance_env" {
   default = ["dev","prod","test","staging"]
 }
+
+
+variable "ingress_ports" {
+  default = [80,8200,5000,9500,443]
+}
+locals {
+  name="test"
+}
 /* 
 
 set is array with no repeating
