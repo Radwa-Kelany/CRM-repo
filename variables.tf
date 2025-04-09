@@ -3,6 +3,6 @@
 #  default = "value"
 # }
 
-variable "instance_type" {
-  default = "t3.micro"
-}
+# variable "instance_type" {
+#   default = "t3.micro"
+# }
