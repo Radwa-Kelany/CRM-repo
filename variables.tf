@@ -16,9 +16,9 @@ variable "instance_ami" {
 }
 
 
-variable "test_var" {
-  type = number
-}
+# variable "test_var" {
+#   type = number
+# }
 
 
 variable "instance_env" {
