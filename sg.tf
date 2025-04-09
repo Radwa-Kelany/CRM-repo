@@ -54,7 +54,7 @@
 # }
 
 
-resource "aws_security_groups" "lb_sg" {
+resource "aws_security_group" "lb_sg" {
   name        = "lb_sg"
   description = "for lb"
   # vpc_id      = aws_vpc.CRM_vpc.id
