@@ -51,7 +51,9 @@ jobs:
        run: sleep 300  # Waits 5 minutes ()
 
      - name: destroy terraform resources
-       run: terraform destroy --auto-approve
+       run: |
+         cd crm-project
+         terraform destroy --auto-approve
        
      - name: Run main task
        run: echo "This runs after the delay"
