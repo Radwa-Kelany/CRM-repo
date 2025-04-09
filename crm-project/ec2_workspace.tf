@@ -1,7 +1,6 @@
 resource "aws_instance" "web_east" {
   ami           = "ami-00a929b66ed6e0de6"
   instance_type = lookup(var.type, terraform.workspace)
-  key_name      = aws_key_pair.t_key_east.key_name
   tags = {
     Name = lookup(var.tag, terraform.workspace)
   }
