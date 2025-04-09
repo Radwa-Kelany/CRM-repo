@@ -1,18 +1,19 @@
 
 resource "aws_key_pair" "t_key_east" {
   key_name   = "t-key_east"
-  public_key = file ("~/.ssh/sshkey.pub")
+  public_key = file("~/.ssh/sshkey.pub")
 }
 
 resource "aws_instance" "web_east" {
   ami           = var.instance_ami["us-east-1"]
   instance_type = var.instance_type
-  key_name = aws_key_pair.t_key_east.key_name
+  key_name      = aws_key_pair.t_key_east.key_name
   tags = {
-    Name = var.instance_tag[0]
+    Name = var.instance_tag[count.index]
   }
+  count = 2
   provisioner "local-exec" {
-    command = "echo ${self.private_ip} >> private_ips.txt"
+    command    = "echo ${self.private_ip} >> private_ips.txt"
     on_failure = continue
   }
 }
@@ -38,7 +39,7 @@ resource "aws_instance" "web_east" {
 # }
 
 # resource "aws_instance" "myec2"{
-  
+
 #   ami           = "ami-00a929b66ed6e0de6"
 #   instance_type = "t2.micro"
 #   key_name = "terraform_key"
@@ -64,7 +65,7 @@ resource "aws_instance" "web_east" {
 # }
 
 # resource "aws_instance" "myec2"{
-  
+
 #   ami           = "ami-00a929b66ed6e0de6"
 #   instance_type = "t2.micro"
 #   key_name = "terraform_key"

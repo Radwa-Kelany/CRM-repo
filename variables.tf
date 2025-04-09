@@ -1,11 +1,11 @@
 variable "instance_type" {
   type= string
-  default = "t3.micro"
+  default = "t2.micro"
 }
 
 variable "instance_tag" {
   type    = list(any)
-  default = ["t-ec2"]
+  default = ["prod","dev","test"]
 }
 
 variable "instance_ami" {
@@ -24,4 +24,7 @@ set is array with no repeating
 List is array with repeating
 Map is object, key value pair
 
+although terraform.tfvars override variables.tf, but you must declare variables 
+first in variables.tf file even it has no value 
+?????????
 */
