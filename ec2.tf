@@ -5,11 +5,11 @@ resource "aws_key_pair" "t_key_east" {
 }
 
 resource "aws_instance" "web_east" {
-  ami           = "ami-00a929b66ed6e0de6"
+  ami           = var.instance_ami["us-east-1"]
   instance_type = var.instance_type
   key_name = aws_key_pair.t_key_east.key_name
   tags = {
-    Name = "t-ec2-02"
+    Name = var.instance_tag[0]
   }
   provisioner "local-exec" {
     command = "echo ${self.private_ip} >> private_ips.txt"
