@@ -8,3 +8,6 @@ resource "aws_instance" "web" {
   vpc_security_group_ids = [module.sg_module.sg_id]
 }
 
+output "ec2_id" {
+  value = module.sg_module.aws_instance.web.id
+}
