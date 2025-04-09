@@ -1,22 +1,24 @@
 variable "instance_type" {
-  type= string
+  type    = string
   default = "t2.micro"
 }
 
 variable "instance_tag" {
   type    = list(any)
-  default = ["prod","dev","test"]
+  default = ["web", "app", "database"]
 }
 
 variable "instance_ami" {
   type = map(any)
   default = {
-     us-east-1 = "ami-00a929b66ed6e0de6"
+    us-east-1-amazon = "ami-00a929b66ed6e0de6"
   }
 }
 
 
-
+variable "test_var" {
+  type = number
+}
 
 /* 
 
