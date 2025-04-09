@@ -44,10 +44,10 @@ jobs:
        run: terraform init
 
      - name: plan terraform
-       run: terraform plan -var test_var="2" -out=tfplan2
+       run: terraform plan -out=tfplan2
      
      - name: apply Terraform 
-       run: terraform apply -var test_var="2" --auto-approve
+       run: terraform apply --auto-approve
 
 
      - name: cat private ip

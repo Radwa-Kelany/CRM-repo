@@ -20,6 +20,10 @@ variable "test_var" {
   type = number
 }
 
+
+variable "instance_env" {
+  default = ["dev","prod","test","staging"]
+}
 /* 
 
 set is array with no repeating
