@@ -9,5 +9,5 @@ resource "aws_instance" "web" {
 }
 
 output "ec2_id" {
-  value = module.sg_module.aws_instance.web.id
+  value = module.sg_module.lb_sg
 }
